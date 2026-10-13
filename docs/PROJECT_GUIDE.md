@@ -36,8 +36,11 @@ Waterpearl/
 │   │   ├── Nav.tsx         -> menu (généré depuis routes.ts)
 │   │   └── Footer.tsx      -> pied de page
 │   └── pages/
-│       ├── Home.tsx        -> page d'accueil  (/)
-│       └── APropos.tsx     -> page À propos   (/a-propos)
+│       ├── Home.tsx          -> Accueil         (/)
+│       ├── HarpeTherapie.tsx -> Harpe thérapie  (/harpe-therapie)
+│       ├── Projets.tsx       -> Projets         (/projets)
+│       ├── HarpSheets.tsx    -> Harp sheets     (/harp-sheets)
+│       └── Bio.tsx           -> Bio             (/bio)
 ├── public/                 -> copié tel quel dans le site final
 │   └── images/             -> images du site
 ├── scripts/
@@ -65,7 +68,7 @@ Avant de committer, toujours vérifier que `npm run build` passe sans erreur.
 
 ## 5. Ajouter une page
 
-1. Créer `src/pages/MaPage.tsx` (copier `APropos.tsx` comme modèle).
+1. Créer `src/pages/MaPage.tsx` (copier `Bio.tsx` comme modèle).
 2. Ajouter la page dans `src/routes.ts` :
    ```ts
    { path: '/ma-page', title: 'Ma page' },
@@ -99,9 +102,15 @@ automatiquement `routes.ts` : pas besoin de les modifier.
 
 ## 7. Couleurs et style
 
-Les couleurs sont définies en haut de `src/style.css` (bloc `:root`).
-Le mode sombre suit automatiquement le réglage de l'ordinateur ; ses couleurs
-sont dans le bloc `@media (prefers-color-scheme: dark)`.
+Le design reprend celui du site Wix Waterpearl Harpe : bandeau turquoise,
+fond bleu très pâle, textes en italique.
+
+- Couleurs et polices : en haut de `src/style.css` (bloc `:root`).
+- Polices : **Playfair Display** (grand titre) et **Libre Baskerville**
+  (menu, texte), installées via npm (`@fontsource/...`) et importées dans
+  `src/main.tsx` : elles sont intégrées au site, sans service externe.
+- Images pas encore fournies : emplacements vides (classe `image-vide`),
+  à remplacer par `<img src={img('...')} />`.
 
 ## 8. Mise en ligne
 
@@ -116,7 +125,7 @@ sont dans le bloc `@media (prefers-color-scheme: dark)`.
   qui ne fonctionne pas encore : GitHub y redirige tous les visiteurs.
 - GitHub Pages ne connaît que des fichiers : `scripts/postbuild.mjs` copie
   `index.html` dans `dist/<page>/index.html` pour chaque page de `routes.ts`
-  (sinon `/a-propos` renverrait une erreur 404), plus un `404.html`.
+  (sinon `/bio` renverrait une erreur 404), plus un `404.html`.
 
 ## 9. Git
 

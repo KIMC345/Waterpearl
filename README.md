@@ -14,7 +14,7 @@ npm run build    # construit le site final dans dist/ (pour vérifier)
 
 ## Ajouter une page
 
-1. Créez `src/pages/MaPage.tsx` (copiez `APropos.tsx`).
+1. Créez `src/pages/MaPage.tsx` (copiez `Bio.tsx`).
 2. Ajoutez la page dans `src/routes.ts`.
 3. Ajoutez son composant dans `PAGES` dans `src/App.tsx`.
 

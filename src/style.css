@@ -1,84 +1,174 @@
-/* Couleurs du site : changez-les ici pour tout le wiki */
+/* Couleurs et polices du site : changez-les ici pour tout le wiki.
+   Reprises du site Wix Waterpearl Harpe. */
 :root {
-  --fond: #ffffff;
-  --texte: #1f2328;
-  --accent: #2563eb;
-  --bordure: #e5e7eb;
-  --fond-menu: #f6f8fa;
-}
+  --texte: #111111;
+  --texte-doux: #4a5a60;
+  --bandeau-debut: #b8e4ec;
+  --bandeau-fin: #8ccfdc;
+  --fond-haut: #eef6f7;
+  --fond-bas: #d5e8ee;
+  --cadre: #ffffff;
+  --image-vide: #f2ebe7;
 
-/* Mode sombre automatique (suit le réglage de l'ordinateur) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --fond: #0d1117;
-    --texte: #e6edf3;
-    --accent: #60a5fa;
-    --bordure: #30363d;
-    --fond-menu: #161b22;
-  }
+  --police-titre: 'Playfair Display', Georgia, serif;
+  --police-texte: 'Libre Baskerville', Georgia, serif;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--police-texte);
   line-height: 1.6;
-  background: var(--fond);
   color: var(--texte);
+  background: linear-gradient(180deg, var(--fond-haut), var(--fond-bas));
+  min-height: 100vh;
 }
 
-/* Menu en haut de page */
-header {
-  background: var(--fond-menu);
-  border-bottom: 1px solid var(--bordure);
-  padding: 1rem;
+/* ---------- Bandeau du haut ---------- */
+.bandeau {
+  background: linear-gradient(90deg, var(--bandeau-debut), var(--bandeau-fin) 60%, #96d3df);
+  padding: 1.5rem 2rem 5rem;
 }
 
-header nav {
-  max-width: 800px;
-  margin: 0 auto;
+.bandeau-ligne {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
   align-items: center;
+  gap: 2rem;
 }
 
-header .titre {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-right: auto;
-}
-
-header a {
+.marque {
+  font-family: var(--police-texte);
+  font-style: italic;
+  font-size: 1.15rem;
   color: var(--texte);
   text-decoration: none;
+  white-space: nowrap;
 }
 
-header a:hover,
-header a.actif {
-  color: var(--accent);
+.onglets {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 2.5rem;
 }
 
-/* Contenu principal */
-main {
+.onglets a {
+  position: relative;
+  font-family: var(--police-texte);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--texte-doux);
+  text-decoration: none;
+  padding-top: 0.35rem;
+}
+
+.onglets a:hover { color: var(--texte); }
+
+/* Onglet actif : texte foncé + trait au-dessus */
+.onglets a.actif { color: var(--texte); }
+.onglets a.actif::before {
+  content: '';
+  position: absolute;
+  top: -0.6rem;
+  left: -0.4rem;
+  right: -0.4rem;
+  height: 3px;
+  background: var(--texte);
+}
+
+.panier {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: none;
+  stroke: var(--texte-doux);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Page d'accueil ---------- */
+.accueil {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 2.5rem 2rem 1rem 5%;
+}
+
+.accueil-rond {
+  width: 100%;
+  max-width: 390px;
+  aspect-ratio: 8 / 7;
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(60, 80, 90, 0.35);
+}
+
+.accueil-titre {
+  align-self: end;
+  margin: 0;
+  font-family: var(--police-titre);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(3rem, 6.5vw, 6.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.accueil-portrait {
+  justify-self: end;
+  align-self: start;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 7 / 10;
+  border: 3px solid var(--cadre);
+  box-shadow: 0 4px 14px rgba(60, 80, 90, 0.2);
+}
+
+/* Emplacement d'image en attendant les vraies photos */
+.image-vide { background: var(--image-vide); }
+
+/* ---------- Pages de contenu ---------- */
+.page {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 3rem 1rem;
 }
 
-a { color: var(--accent); }
+.page h1 {
+  font-family: var(--police-titre);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 2.8rem;
+}
 
 img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
 }
 
 footer {
-  border-top: 1px solid var(--bordure);
   text-align: center;
-  padding: 1.5rem 1rem;
-  font-size: 0.9rem;
-  opacity: 0.7;
+  padding: 2rem 1rem;
+  font-size: 0.85rem;
+  color: var(--texte-doux);
+}
+
+/* ---------- Téléphone ---------- */
+@media (max-width: 800px) {
+  .bandeau { padding: 1rem 1rem 2rem; }
+  .bandeau-ligne { flex-wrap: wrap; gap: 1rem; }
+  .onglets { order: 3; flex-basis: 100%; justify-content: flex-start; gap: 0.75rem 1.5rem; }
+  .panier { margin-left: auto; }
+
+  .accueil {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 2rem 1rem;
+  }
+  .accueil-titre { order: -1; align-self: center; }
+  .accueil-rond { max-width: 300px; }
+  .accueil-portrait { justify-self: center; max-width: 320px; }
 }

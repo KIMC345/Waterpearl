@@ -4,7 +4,10 @@
 // Pour ajouter une page : ajoutez-la ici, puis son composant dans App.tsx.
 export const ROUTES = [
   { path: '/', title: 'Accueil' },
-  { path: '/a-propos', title: 'À propos' },
+  { path: '/harpe-therapie', title: 'Harpe thérapie' },
+  { path: '/projets', title: 'Projets' },
+  { path: '/harp-sheets', title: 'Harp sheets' },
+  { path: '/bio', title: 'Bio' },
 ] as const
 
 export type RoutePath = (typeof ROUTES)[number]['path']

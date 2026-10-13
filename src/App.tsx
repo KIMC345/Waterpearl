@@ -3,13 +3,19 @@ import { Route, Routes } from 'react-router-dom'
 import { ROUTES, type RoutePath } from './routes.ts'
 import Layout from './components/Layout.tsx'
 import Home from './pages/Home.tsx'
-import APropos from './pages/APropos.tsx'
+import HarpeTherapie from './pages/HarpeTherapie.tsx'
+import Projets from './pages/Projets.tsx'
+import HarpSheets from './pages/HarpSheets.tsx'
+import Bio from './pages/Bio.tsx'
 
 // Un composant par page de routes.ts. TypeScript signale une erreur
 // si une page de la liste n'a pas de composant ici.
 const PAGES: Record<RoutePath, ComponentType> = {
   '/': Home,
-  '/a-propos': APropos,
+  '/harpe-therapie': HarpeTherapie,
+  '/projets': Projets,
+  '/harp-sheets': HarpSheets,
+  '/bio': Bio,
 }
 
 export default function App() {
@@ -33,8 +39,10 @@ export default function App() {
         path="*"
         element={
           <Layout title="Page introuvable">
-            <h1>Page introuvable</h1>
-            <p>Cette page n'existe pas.</p>
+            <div className="page">
+              <h1>Page introuvable</h1>
+              <p>Cette page n'existe pas.</p>
+            </div>
           </Layout>
         }
       />
