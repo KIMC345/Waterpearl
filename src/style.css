@@ -227,6 +227,71 @@ body {
   text-align: center;
 }
 
+/* ---------- Cartes des domaines d'application (Harpe thérapie) ---------- */
+.domaines {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem 4%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 4rem 3% 5rem;
+}
+
+.domaine {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.75rem 2.5rem;
+  background: linear-gradient(180deg, #a9e1ec, #c4ecf3);
+  font-family: var(--police-lecture);
+}
+
+.domaine-titre {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 3.2em;
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid #5a6a70;
+  font-weight: 400;
+  font-size: 1.55rem;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.domaine-image {
+  width: 100%;
+  aspect-ratio: 6 / 5;
+  object-fit: cover;
+}
+
+.domaine-texte {
+  margin: 0.8rem 0 0;
+  font-size: 1.05rem;
+  line-height: 1.95;
+}
+
+.domaine-etoiles {
+  margin: 1.5rem 0;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.domaine-conclusion {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.95;
+}
+
+@media (max-width: 1050px) {
+  .domaines { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .domaines { grid-template-columns: 1fr; padding: 2.5rem 1rem 3rem; gap: 2rem; }
+  .domaine-titre { min-height: 0; font-size: 1.35rem; }
+}
+
 /* Emplacement d'image en attendant les vraies photos */
 .image-vide { background: var(--image-vide); }
 
