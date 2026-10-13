@@ -23,13 +23,13 @@ const DOMAINES: Domaine[] = [
       "Découvrir la musique de manière créative et expressive tout en honorant la personnalité unique de chaque enfant.",
   },
   {
-    titre: ['Dans les centre de bien-être', 'ou en Entreprise'],
+    titre: ['Dans les centres de bien-être', 'ou en Entreprise'],
     texte:
       "La harpe thérapie est un magnifique complément aux séances de yoga yin, restauratif ou yoga nidra, apportant détente et harmonie. Son intégration en entreprise constitue un atout précieux pour la gestion du stress, favorisant ainsi un environnement de travail plus serein.",
     conclusion: 'Offrez à votre esprit et à votre corps cette expérience apaisante et revitalisante.',
   },
   {
-    titre: ['En EMS, ou en EPADH'],
+    titre: ['En EMS, ou en EHPAD'],
     texte:
       "La thérapie par la harpe en maison de retraite offre des séances individuelles dans les chambres ou des sessions de groupe, créant un lien précieux au-delà des soins. Les séances peuvent aider à aborder avec bienveillance la perte d'indépendance, de mobilité, ainsi que les changements liés aux différents sens.",
     conclusion:
@@ -50,7 +50,7 @@ const DOMAINES: Domaine[] = [
       'Accompagner et apaiser par le son en créant un cocon sonore pour un environnement plus tranquillisant et rassurant.',
   },
   {
-    titre: ['En soin paliatif'],
+    titre: ['En soin palliatif'],
     texte:
       "La harpe, avec sa douceur apaisante, se révèle être un précieux intermédiaire pour accompagner les personnes en fin de vie. Elle permet de maintenir un lien et d'initier une préparation sereine à cette transition vers une nouvelle dimension. La musique devient alors un soutien réconfortant dans ces moments délicats.",
     conclusion:
@@ -77,7 +77,7 @@ export default function HarpeTherapie() {
             que la harpe thérapie ne soit pas encore officiellement reconnue en Europe, elle
             trouve de plus en plus sa place dans divers environnements, tels que les hôpitaux,
             maisons de retraite ou centres de bien-être, offrant des séances personnalisées
-            adaptées aux besoins chacun.
+            adaptées aux besoins de chacun.
           </p>
 
           <p>

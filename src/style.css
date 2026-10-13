@@ -290,6 +290,75 @@ body {
   .domaine-titre { min-height: 0; font-size: 1.35rem; }
 }
 
+/* ---------- Page Bio ---------- */
+.bio {
+  background: linear-gradient(180deg, #9fe2ed, #b9edf4);
+  font-family: var(--police-lecture);
+  padding-bottom: 4rem;
+}
+
+.bio-haut {
+  display: grid;
+  grid-template-columns: 41% 1fr;
+  gap: 8%;
+  align-items: center;
+  padding: 1rem 4% 0 0;
+}
+
+.bio-photo {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.bio-bonjour h1,
+.bio-histoire h2 {
+  margin: 0 0 2rem;
+  font-weight: 400;
+  font-size: 2.8rem;
+  line-height: 1.2;
+}
+
+.bio-bonjour p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 2;
+}
+
+.bio-reseaux {
+  display: flex;
+  gap: 1.1rem;
+  margin: 1.5rem 0 0 3rem;
+}
+
+.bio-reseaux svg {
+  display: block;
+  width: 1.3rem;
+  height: 1.3rem;
+  fill: var(--texte);
+  color: var(--texte);
+}
+
+.bio-histoire {
+  max-width: 900px;
+  margin: 4rem 0 0 32%;
+  padding-right: 4%;
+}
+
+.bio-histoire p {
+  margin: 0 0 1.4rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .bio-haut { grid-template-columns: 1fr; gap: 2rem; padding: 0; }
+  .bio-bonjour { padding: 0 1rem; }
+  .bio-reseaux { margin-left: 0; }
+  .bio-histoire { margin: 3rem 0 0; padding: 0 1rem; }
+  .bio-bonjour h1, .bio-histoire h2 { font-size: 2.2rem; margin-bottom: 1.2rem; }
+}
+
 /* Emplacement d'image en attendant les vraies photos */
 .image-vide { background: var(--image-vide); }
 
