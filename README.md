@@ -1,11 +1,12 @@
-# Mon wiki
+# Waterpearl
+A wiki dedicated to music and harp-therapy
 
 Site statique simple (HTML + CSS), hébergé gratuitement avec GitHub Pages.
 
 ## Structure
 
 ```
-mon-wiki/
+Waterpearl/
 ├── index.html      -> page d'accueil
 ├── a-propos.html   -> page "À propos"
 ├── style.css       -> styles communs à toutes les pages
