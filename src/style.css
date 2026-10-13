@@ -10,8 +10,12 @@
   --cadre: #ffffff;
   --image-vide: #f2ebe7;
 
+  --bleu-lien: #2c4a72;
+
   --police-titre: 'Playfair Display', Georgia, serif;
   --police-texte: 'Libre Baskerville', Georgia, serif;
+  --police-lecture: 'EB Garamond', Garamond, Georgia, serif;
+  --police-majuscules: 'Montserrat', 'Segoe UI', sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -127,6 +131,56 @@ body {
   box-shadow: 0 4px 14px rgba(60, 80, 90, 0.2);
 }
 
+/* Texte de présentation sous le titre */
+.accueil-texte {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 3rem 2rem 1rem;
+  font-family: var(--police-lecture);
+  font-size: 1.35rem;
+  line-height: 1.75;
+}
+
+.accueil-texte p { margin: 0 0 1.6rem; }
+
+.accueil-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  padding: 4rem 1rem 5rem;
+}
+
+.lien-majuscules {
+  font-family: var(--police-majuscules);
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--bleu-lien);
+  text-decoration: none;
+}
+
+.lien-majuscules:hover { text-decoration: underline; }
+
+.bouton-pilule {
+  display: inline-block;
+  padding: 1.1rem 3.6rem;
+  border: 1.5px solid #2a3a40;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f4fbfc, #cdeef3);
+  box-shadow: 0 2px 6px rgba(40, 60, 70, 0.2);
+  font-family: var(--police-lecture);
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: var(--bleu-lien);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.bouton-pilule:hover { background: linear-gradient(90deg, #e6f6f8, #b5e4ec); }
+
 /* Emplacement d'image en attendant les vraies photos */
 .image-vide { background: var(--image-vide); }
 
@@ -171,4 +225,9 @@ footer {
   .accueil-titre { order: -1; align-self: center; }
   .accueil-rond { max-width: 300px; }
   .accueil-portrait { justify-self: center; max-width: 320px; }
+
+  .accueil-texte { padding: 2rem 1rem 0; font-size: 1.15rem; }
+  .accueil-actions { gap: 2.5rem; padding: 2.5rem 1rem 3rem; }
+  .lien-majuscules { font-size: 1rem; letter-spacing: 0.15em; }
+  .bouton-pilule { padding: 0.9rem 2.4rem; font-size: 1.3rem; }
 }
