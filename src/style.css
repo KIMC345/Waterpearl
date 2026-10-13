@@ -56,8 +56,6 @@ body {
 .logo {
   width: 3.6rem;
   height: 3.6rem;
-  border-radius: 50%;
-  border: 1.5px solid var(--texte-doux);
   flex-shrink: 0;
 }
 

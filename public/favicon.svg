@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Icône Waterpearl : harpe dans un cercle, d'après le croquis.
+       Sert d'icône d'onglet et de logo dans le bandeau. -->
+  <circle cx="32" cy="32" r="30" fill="#bfe8ef" stroke="#24363d" stroke-width="2"/>
+
+  <!-- Cordes (dessinées en premier, sous le cadre) -->
+  <g stroke="#24363d" stroke-width="1" stroke-linecap="round">
+    <line x1="25" y1="13" x2="25" y2="49"/>
+    <line x1="29" y1="13.5" x2="29" y2="44"/>
+    <line x1="33" y1="15" x2="33" y2="38.5"/>
+    <line x1="37" y1="16.5" x2="37" y2="33"/>
+    <line x1="41" y1="17" x2="41" y2="27.5"/>
+    <line x1="45" y1="16" x2="45" y2="22"/>
+  </g>
+
+  <!-- Table d'harmonie : corps épais en diagonale -->
+  <path d="M46.5 16.5 L50.5 19.5 L26 54.5 L20.5 52.5 Z" fill="#24363d"/>
+
+  <g fill="none" stroke="#24363d" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Colonne -->
+    <path d="M21 13 C20 25 20.5 40 21 53" stroke-width="3.4"/>
+    <!-- Console en S, de la colonne jusqu'au haut de la table -->
+    <path d="M21 13 C27 7 33 17 40 16.5 C44 16.2 46 13.5 49 16.5" stroke-width="3"/>
+    <!-- Volute en haut de la colonne -->
+    <path d="M21 13 c-1.5 -4.5 -7 -4 -6.5 0 c0.4 2.6 3.8 2.4 3.4 0" stroke-width="2.2"/>
+    <!-- Pied -->
+    <path d="M16.5 54 L28.5 54" stroke-width="3"/>
+  </g>
+</svg>

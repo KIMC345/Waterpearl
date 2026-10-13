@@ -6,8 +6,8 @@ export default function Nav() {
     <header className="bandeau">
       <div className="bandeau-ligne">
         <Link to="/" className="marque">
-          {/* Emplacement du logo rond, à remplacer par <img src={img('logo.png')} /> */}
-          <span className="logo image-vide" aria-hidden="true" />
+          {/* Même dessin que l'icône d'onglet (public/favicon.svg) */}
+          <img className="logo" src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" />
           Waterpearl Harpe
         </Link>
         <nav className="onglets">
