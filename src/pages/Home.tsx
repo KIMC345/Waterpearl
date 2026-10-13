@@ -1,18 +1,25 @@
 import { Link } from 'react-router-dom'
+import { img } from '../image.ts'
 
-// Les deux images sont pour l'instant des emplacements vides
-// (classe "image-vide") : à remplacer par <img src={img('...')} /> plus tard.
 export default function Home() {
   return (
     <>
       <section className="accueil">
-        <div className="accueil-rond image-vide" role="img" aria-label="Image à venir" />
+        <img
+          className="accueil-rond"
+          src={img('harpiste-sous-eau.jpg')}
+          alt="Harpiste jouant d'une petite harpe blanche sous l'eau, entourée de bulles"
+        />
         <h1 className="accueil-titre">
           Waterpearl
           <br />
           Harpe
         </h1>
-        <div className="accueil-portrait image-vide" role="img" aria-label="Image à venir" />
+        <img
+          className="accueil-portrait"
+          src={img('harpe-voiles.jpg')}
+          alt="Petite harpe blanche entourée de voiles colorés roses, orange et jaunes"
+        />
       </section>
 
       <section className="accueil-texte">

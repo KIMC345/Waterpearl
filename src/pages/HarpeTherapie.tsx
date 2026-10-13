@@ -1,8 +1,11 @@
-// L'image de fond (voiles colorés) est pour l'instant un emplacement vide :
-// à mettre plus tard en background-image sur .fond-image.
+import { img } from '../image.ts'
+
+// Fond : la photo des voiles, éclaircie par un voile blanc pour que le texte reste lisible.
+const FOND = `linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(${img('harpe-voiles-fond.jpg')})`
+
 export default function HarpeTherapie() {
   return (
-    <section className="fond-image image-vide">
+    <section className="fond-image" style={{ backgroundImage: FOND }}>
       <div className="texte-page">
         <h1 className="titre-majuscules">Harpe thérapie</h1>
 
