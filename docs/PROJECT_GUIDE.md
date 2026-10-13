@@ -9,64 +9,114 @@
 **Waterpearl** est un wiki consacré à la musique et à la harpothérapie.
 
 - Dépôt GitHub : https://github.com/KIMC345/Waterpearl
-- Site en ligne (une fois GitHub Pages activé) : https://kimc345.github.io/Waterpearl/
+- Site en ligne : https://kimc345.github.io/Waterpearl/
 
 ## 2. Technologie
 
-Site **statique en HTML + CSS**, sans framework ni étape de build :
-ce qui est dans le dépôt est exactement ce qui est publié.
+- **React + TypeScript**, construit avec **Vite**.
+- **React Router** pour la navigation entre les pages.
+- Publié par **GitHub Pages** via **GitHub Actions** (`.github/workflows/deploy.yml`).
+
+Le site doit être *construit* (`npm run build`) avant publication : GitHub
+Actions le fait automatiquement à chaque push sur `main`.
 
 ## 3. Structure des fichiers
 
 ```
 Waterpearl/
-├── index.html          -> page d'accueil
-├── a-propos.html       -> page "À propos"
-├── style.css           -> styles communs à toutes les pages
-├── images/             -> images du site
-├── docs/
-│   └── PROJECT_GUIDE.md  -> ce guide
-├── CLAUDE.md           -> règles pour les assistants IA
-└── README.md
+├── index.html              -> point d'entrée (ne contient que <div id="root">)
+├── src/
+│   ├── main.tsx            -> démarre React
+│   ├── App.tsx             -> associe chaque adresse à sa page
+│   ├── routes.ts           -> LA liste des pages (adresse + titre)
+│   ├── image.ts            -> img('nom.jpg') : adresse d'une image
+│   ├── style.css           -> styles communs à tout le site
+│   ├── components/
+│   │   ├── Layout.tsx      -> cadre commun : menu + contenu + pied de page
+│   │   ├── Nav.tsx         -> menu (généré depuis routes.ts)
+│   │   └── Footer.tsx      -> pied de page
+│   └── pages/
+│       ├── Home.tsx        -> page d'accueil  (/)
+│       └── APropos.tsx     -> page À propos   (/a-propos)
+├── public/                 -> copié tel quel dans le site final
+│   └── images/             -> images du site
+├── scripts/
+│   └── postbuild.mjs       -> crée un fichier par page après le build
+├── .github/workflows/
+│   └── deploy.yml          -> publication automatique sur GitHub Pages
+├── docs/PROJECT_GUIDE.md   -> ce guide
+├── CLAUDE.md               -> règles pour les assistants IA
+└── package.json            -> dépendances et commandes npm
 ```
 
-## 4. Voir le site en local
+`node_modules/` (dépendances installées) et `dist/` (site construit) ne sont
+pas versionnés (voir `.gitignore`).
 
-Double-cliquer sur `index.html` : il s'ouvre dans le navigateur.
-Après une modification, recharger la page (F5).
+## 4. Travailler en local
+
+```
+npm install      # une seule fois, ou après un changement de package.json
+npm run dev      # ouvre le site sur http://localhost:5173, mis à jour en direct
+npm run build    # construit le site final dans dist/
+npm run preview  # sert dist/ pour vérifier le résultat final
+```
+
+Avant de committer, toujours vérifier que `npm run build` passe sans erreur.
 
 ## 5. Ajouter une page
 
-1. Copier `a-propos.html` et renommer la copie (ex. `harpotherapie.html`).
-   Noms de fichiers : minuscules, sans accents ni espaces, mots séparés par `-`.
-2. Changer le `<title>` et le contenu dans `<main>`.
-3. Ajouter un lien vers la nouvelle page dans le `<nav>` de **chaque** page
-   (le menu est recopié dans chaque fichier).
-4. Dans le menu de la nouvelle page, mettre `class="actif"` sur son propre lien.
+1. Créer `src/pages/MaPage.tsx` (copier `APropos.tsx` comme modèle).
+2. Ajouter la page dans `src/routes.ts` :
+   ```ts
+   { path: '/ma-page', title: 'Ma page' },
+   ```
+   Adresse : minuscules, sans accents ni espaces, mots séparés par `-`.
+3. Ajouter le composant dans `PAGES` dans `src/App.tsx` :
+   ```tsx
+   import MaPage from './pages/MaPage.tsx'
+   // ...
+   '/ma-page': MaPage,
+   ```
+   Si on oublie cette étape, TypeScript affiche une erreur au build.
+
+Le menu, le titre de l'onglet et le fichier généré pour GitHub Pages suivent
+automatiquement `routes.ts` : pas besoin de les modifier.
 
 ## 6. Ajouter une image
 
-1. Placer le fichier dans `images/` (nom sans accents ni espaces).
-2. L'insérer dans la page :
-   ```html
-   <img src="images/ma-photo.jpg" alt="Description de l'image">
+1. Placer le fichier dans `public/images/` (nom sans accents ni espaces).
+2. L'insérer dans une page avec la fonction `img()` :
+   ```tsx
+   import { img } from '../image.ts'
+   // ...
+   <img src={img('ma-photo.jpg')} alt="Description de l'image" />
    ```
+   Ne pas écrire `src="/images/ma-photo.jpg"` : le site est publié sous
+   `/Waterpearl/`, et cette adresse ne fonctionnerait pas en ligne.
 3. Toujours remplir `alt` (accessibilité).
 4. Préférer des images légères (JPG/WebP, moins de ~500 Ko).
-5. N'utiliser que des images dont on a les droits (photos personnelles,
-   images libres de droits avec crédit si demandé).
+5. N'utiliser que des images dont on a les droits.
 
 ## 7. Couleurs et style
 
-Les couleurs sont définies en haut de `style.css` (bloc `:root`).
+Les couleurs sont définies en haut de `src/style.css` (bloc `:root`).
 Le mode sombre suit automatiquement le réglage de l'ordinateur ; ses couleurs
 sont dans le bloc `@media (prefers-color-scheme: dark)`.
 
 ## 8. Mise en ligne
 
-Le site est publié par **GitHub Pages** (gratuit, dépôt public) :
-Settings → Pages → Branch `main` / `(root)`.
-Chaque `git push` sur `main` met le site à jour en 1 à 2 minutes.
+- Chaque push sur `main` lance `.github/workflows/deploy.yml`, qui construit
+  le site et le publie. Suivi dans l'onglet **Actions** du dépôt GitHub.
+- Réglage requis une fois : **Settings → Pages → Source : GitHub Actions**.
+- Adresse : `kimc345.github.io/Waterpearl/`, d'où `base: '/Waterpearl/'` dans
+  `vite.config.ts` (repris par le routeur et par `img()`).
+- Pour un domaine personnalisé plus tard : l'acheter, configurer ses DNS,
+  le déclarer dans **Settings → Pages → Custom domain**, ajouter
+  `public/CNAME` et passer `base` à `'/'`. Ne jamais déclarer un domaine
+  qui ne fonctionne pas encore : GitHub y redirige tous les visiteurs.
+- GitHub Pages ne connaît que des fichiers : `scripts/postbuild.mjs` copie
+  `index.html` dans `dist/<page>/index.html` pour chaque page de `routes.ts`
+  (sinon `/a-propos` renverrait une erreur 404), plus un `404.html`.
 
 ## 9. Git
 
@@ -78,7 +128,6 @@ Chaque `git push` sur `main` met le site à jour en 1 à 2 minutes.
 
 ## 10. Ce qui reste à faire
 
-- Remplacer le titre provisoire « Mon wiki » par « Waterpearl » dans toutes les pages.
 - Écrire le contenu réel des pages (actuellement textes d'exemple).
 - Définir la liste des pages et le menu.
 - Choisir les couleurs du site.
