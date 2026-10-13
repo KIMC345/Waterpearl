@@ -5,7 +5,11 @@ export default function Nav() {
   return (
     <header className="bandeau">
       <div className="bandeau-ligne">
-        <Link to="/" className="marque">Waterpearl Harpe</Link>
+        <Link to="/" className="marque">
+          {/* Emplacement du logo rond, à remplacer par <img src={img('logo.png')} /> */}
+          <span className="logo image-vide" aria-hidden="true" />
+          Waterpearl Harpe
+        </Link>
         <nav className="onglets">
           {ROUTES.map(({ path, title }) => (
             <NavLink

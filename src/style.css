@@ -42,12 +42,23 @@ body {
 }
 
 .marque {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   font-family: var(--police-texte);
   font-style: italic;
   font-size: 1.15rem;
   color: var(--texte);
   text-decoration: none;
   white-space: nowrap;
+}
+
+.logo {
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--texte-doux);
+  flex-shrink: 0;
 }
 
 .onglets {
@@ -181,6 +192,35 @@ body {
 
 .bouton-pilule:hover { background: linear-gradient(90deg, #e6f6f8, #b5e4ec); }
 
+/* ---------- Pages avec image de fond (ex. Harpe thérapie) ---------- */
+.fond-image {
+  background-size: cover;
+  background-position: center;
+  padding: 4rem 2rem 5rem;
+}
+
+.texte-page {
+  max-width: 1050px;
+  margin: 0 auto;
+  font-family: var(--police-lecture);
+  font-size: 1.3rem;
+  line-height: 2.1;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.texte-page p { margin: 0 0 2.5rem; }
+
+.titre-majuscules {
+  margin: 0 0 3.5rem;
+  font-family: var(--police-lecture);
+  font-weight: 400;
+  font-size: 2.4rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 /* Emplacement d'image en attendant les vraies photos */
 .image-vide { background: var(--image-vide); }
 
@@ -230,4 +270,9 @@ footer {
   .accueil-actions { gap: 2.5rem; padding: 2.5rem 1rem 3rem; }
   .lien-majuscules { font-size: 1rem; letter-spacing: 0.15em; }
   .bouton-pilule { padding: 0.9rem 2.4rem; font-size: 1.3rem; }
+
+  .logo { width: 2.6rem; height: 2.6rem; }
+  .fond-image { padding: 2.5rem 1rem 3rem; }
+  .texte-page { font-size: 1.1rem; line-height: 1.85; text-align: left; }
+  .titre-majuscules { font-size: 1.8rem; margin-bottom: 2rem; }
 }
