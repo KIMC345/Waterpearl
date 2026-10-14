@@ -70,6 +70,16 @@ main p {
   flex-shrink: 0;
 }
 
+/* Cadre du menu : les flèches de défilement n'apparaissent que sur téléphone. */
+.onglets-cadre {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.onglets-fleche { display: none; }
+
 /* Onglets toujours sur une seule ligne ; l'espacement se resserre
    quand la fenêtre rétrécit. */
 .onglets {
@@ -93,9 +103,10 @@ main p {
 
 .onglets a:hover { color: var(--texte); }
 
-/* Onglet actif : texte foncé + trait au-dessus */
+/* Onglet actif : texte foncé + trait au-dessus du titre */
 .onglets a.actif { color: var(--texte); }
-.onglets a.actif::before {
+.onglets a span { position: relative; display: inline-block; }
+.onglets a.actif span::before {
   content: '';
   position: absolute;
   top: -0.6rem;
@@ -254,6 +265,17 @@ main p {
 /* Pas d'animation pour les personnes qui ont demandé moins de mouvement. */
 @media (prefers-reduced-motion: reduce) {
   .bouton-pilule { animation: none; }
+}
+
+/* Flèche du menu sur téléphone : petit va-et-vient vers la droite */
+@keyframes onglets-invite {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .onglets-fleche svg { animation: none !important; }
+  .onglets { scroll-behavior: auto; }
 }
 
 /* ---------- Pages avec image de fond (ex. Harpe thérapie) ---------- */
@@ -591,19 +613,87 @@ footer {
 @media (max-width: 1050px) {
   .bandeau-ligne { flex-wrap: wrap; row-gap: 1.25rem; }
   .panier { margin-left: auto; }
-  .onglets { order: 3; flex-basis: 100%; }
+  .onglets-cadre { order: 3; flex-basis: 100%; }
 }
 
 /* ---------- Téléphone ---------- */
 @media (max-width: 800px) {
   .bandeau { padding: 1rem 1rem 2rem; }
-  /* Une seule ligne : si elle dépasse, on la fait défiler du doigt */
+  /* Menu : trois onglets visibles à la fois (Accueil, Harpe thérapie,
+     Projets) ; on fait glisser du doigt, ou on touche la flèche, pour voir
+     les suivants. Le défilement s'arrête toujours sur un groupe de trois. */
   .onglets {
     justify-content: flex-start;
-    gap: 1.5rem;
+    gap: 0;
     overflow-x: auto;
-    padding: 0.7rem 0.2rem 0.3rem;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    padding: 0.7rem 0 0.3rem;
     scrollbar-width: none;
+  }
+  .onglets::-webkit-scrollbar { display: none; }
+
+  .onglets a {
+    flex: 0 0 calc(100% / 3);
+    scroll-snap-align: start;
+    padding: 0.35rem 0.25rem 0;
+    text-align: center;
+    white-space: normal;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  /* Fondu sur le bord où il reste des onglets cachés */
+  .cache-droite .onglets {
+    -webkit-mask-image: linear-gradient(to right, #000 90%, transparent);
+    mask-image: linear-gradient(to right, #000 90%, transparent);
+  }
+  .cache-gauche .onglets {
+    -webkit-mask-image: linear-gradient(to left, #000 90%, transparent);
+    mask-image: linear-gradient(to left, #000 90%, transparent);
+  }
+  .cache-gauche.cache-droite .onglets {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  }
+
+  /* Petites flèches rondes de chaque côté du menu */
+  .onglets-fleche {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 1.9rem;
+    height: 1.9rem;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 1px 4px rgba(40, 60, 70, 0.15);
+    color: var(--texte-doux);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .onglets-fleche.gauche { margin-right: 0.3rem; }
+  .onglets-fleche.droite { margin-left: 0.3rem; }
+  .onglets-fleche svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .cache-gauche .onglets-fleche.gauche,
+  .cache-droite .onglets-fleche.droite {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  /* La flèche de droite fait un petit mouvement au début, pour inviter à glisser */
+  .cache-droite .onglets-fleche.droite svg {
+    animation: onglets-invite 1.4s ease-in-out 0.8s 3;
   }
 
   .accueil {
