@@ -66,7 +66,7 @@ export default function AudioVideos() {
 
   return (
     <div className="medias">
-      <h1>Audio et vidéos</h1>
+      <h1 className="titre-page">Audio et vidéos</h1>
 
       <section>
         <h2 className="medias-section">Audio</h2>

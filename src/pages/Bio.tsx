@@ -34,12 +34,14 @@ function Reseau({ url, nom, children }: { url: string; nom: string; children: Re
 export default function Bio() {
   return (
     <div className="bio">
+      <h1 className="titre-page">Bio</h1>
+
       <section className="bio-haut">
         {/* Photo à venir : remplacer par <img className="bio-photo" src={img('...')} alt="..." /> */}
         <div className="bio-photo image-vide" role="img" aria-label="Photo à venir" />
 
         <div className="bio-bonjour">
-          <h1>Bonjour !</h1>
+          <h2>Bonjour !</h2>
           <p>
             Bienvenue sur mon site ! En tant que praticienne en harpe thérapie, je suis
             profondément passionnée par toutes les formes d’art qui favorisent des échanges
