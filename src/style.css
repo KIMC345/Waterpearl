@@ -182,19 +182,40 @@ body {
 .bouton-pilule {
   display: inline-block;
   padding: 1.1rem 3.6rem;
-  border: 1.5px solid #2a3a40;
+  border: 2px solid var(--bleu-lien);
   border-radius: 999px;
-  background: linear-gradient(90deg, #f4fbfc, #cdeef3);
-  box-shadow: 0 2px 6px rgba(40, 60, 70, 0.2);
+  background-image: linear-gradient(90deg, #f4fbfc, #b3e3eb, #f4fbfc, #b3e3eb);
+  background-size: 300% 100%;
+  /* Ombre portée douce sous le bouton pour le faire ressortir. */
+  box-shadow:
+    0 4px 8px rgba(44, 74, 114, 0.2),
+    0 12px 28px rgba(44, 74, 114, 0.28);
+  transition: box-shadow 0.25s;
   font-family: var(--police-lecture);
   font-weight: 600;
   font-size: 1.6rem;
   color: var(--bleu-lien);
   text-decoration: none;
-  transition: background 0.2s;
+  /* Un reflet d'eau glisse lentement sur le bouton. */
+  animation: vague-reflet 9s ease-in-out infinite alternate;
 }
 
-.bouton-pilule:hover { background: linear-gradient(90deg, #e6f6f8, #b5e4ec); }
+.bouton-pilule:hover {
+  background-image: linear-gradient(90deg, #e6f6f8, #9dd8e3, #e6f6f8, #9dd8e3);
+  box-shadow:
+    0 6px 10px rgba(44, 74, 114, 0.24),
+    0 16px 34px rgba(44, 74, 114, 0.34);
+}
+
+@keyframes vague-reflet {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+/* Pas d'animation pour les personnes qui ont demandé moins de mouvement. */
+@media (prefers-reduced-motion: reduce) {
+  .bouton-pilule { animation: none; }
+}
 
 /* ---------- Pages avec image de fond (ex. Harpe thérapie) ---------- */
 .fond-image {
