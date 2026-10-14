@@ -155,3 +155,14 @@ fond bleu très pâle, textes en italique.
 - Écrire le contenu réel des pages (actuellement textes d'exemple).
 - Définir la liste des pages et le menu.
 - Choisir les couleurs du site.
+
+### Traduction (décidé le 14 octobre 2026, à faire plus tard)
+
+- Choix retenu : de **vraies versions traduites**, relues par la
+  propriétaire, avec un sélecteur de langue (FR / EN…) dans le bandeau.
+- Écarté : le widget Google Traduction (envoie le contenu à Google et fait
+  planter les sites React) et la seule traduction automatique du navigateur.
+- **À faire seulement quand tous les textes français seront écrits**, pour ne
+  pas traduire deux fois. Demander d'abord quelles langues ajouter.
+- Traduire fidèlement, sans ajouter de contenu, puis faire relire avant
+  de committer.
