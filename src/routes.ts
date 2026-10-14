@@ -7,6 +7,7 @@ export const ROUTES = [
   { path: '/harpe-therapie', title: 'Harpe thérapie' },
   { path: '/projets', title: 'Projets' },
   { path: '/harp-sheets', title: 'Harp sheets' },
+  { path: '/audio-videos', title: 'Audio et vidéos' },
   { path: '/bio', title: 'Bio' },
 ] as const
 

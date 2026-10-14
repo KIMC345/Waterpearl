@@ -6,6 +6,7 @@ import Home from './pages/Home.tsx'
 import HarpeTherapie from './pages/HarpeTherapie.tsx'
 import Projets from './pages/Projets.tsx'
 import HarpSheets from './pages/HarpSheets.tsx'
+import AudioVideos from './pages/AudioVideos.tsx'
 import Bio from './pages/Bio.tsx'
 
 // Un composant par page de routes.ts. TypeScript signale une erreur
@@ -15,6 +16,7 @@ const PAGES: Record<RoutePath, ComponentType> = {
   '/harpe-therapie': HarpeTherapie,
   '/projets': Projets,
   '/harp-sheets': HarpSheets,
+  '/audio-videos': AudioVideos,
   '/bio': Bio,
 }
 

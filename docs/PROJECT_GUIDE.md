@@ -29,7 +29,9 @@ Waterpearl/
 │   ├── main.tsx            -> démarre React
 │   ├── App.tsx             -> associe chaque adresse à sa page
 │   ├── routes.ts           -> LA liste des pages (adresse + titre)
-│   ├── image.ts            -> img('nom.jpg') : adresse d'une image
+│   ├── image.ts            -> img(), audio(), video() : adresse d'un fichier
+│   ├── audios.ts           -> liste des audios (page Audio et vidéos)
+│   ├── videos.ts           -> liste des vidéos (page Audio et vidéos)
 │   ├── style.css           -> styles communs à tout le site
 │   ├── components/
 │   │   ├── Layout.tsx      -> cadre commun : menu + contenu + pied de page
@@ -40,9 +42,12 @@ Waterpearl/
 │       ├── HarpeTherapie.tsx -> Harpe thérapie  (/harpe-therapie)
 │       ├── Projets.tsx       -> Projets         (/projets)
 │       ├── HarpSheets.tsx    -> Harp sheets     (/harp-sheets)
+│       ├── AudioVideos.tsx   -> Audio et vidéos (/audio-videos)
 │       └── Bio.tsx           -> Bio             (/bio)
 ├── public/                 -> copié tel quel dans le site final
-│   └── images/             -> images du site
+│   ├── images/             -> images du site
+│   ├── audio/              -> fichiers MP3
+│   └── video/              -> petits fichiers MP4
 ├── scripts/
 │   └── postbuild.mjs       -> crée un fichier par page après le build
 ├── .github/workflows/
@@ -100,7 +105,17 @@ automatiquement `routes.ts` : pas besoin de les modifier.
 4. Préférer des images légères (JPG/WebP, moins de ~500 Ko).
 5. N'utiliser que des images dont on a les droits.
 
-## 7. Couleurs et style
+## 7. Ajouter un audio ou une vidéo
+
+- **Audio** : placer le MP3 dans `public/audio/`, puis remplir un emplacement
+  dans `src/audios.ts` (`titre`, `fichier`, et `image` facultative).
+- **Vidéo** : de préférence sur YouTube (lien dans le champ `youtube` de
+  `src/videos.ts`). Seuls de courts extraits légers (moins de ~20 Mo) vont
+  dans `public/video/` (champ `fichier`) : GitHub refuse les fichiers de plus
+  de 100 Mo et le site est limité à environ 1 Go.
+- Un champ vide affiche un emplacement « à venir ».
+
+## 8. Couleurs et style
 
 Le design reprend celui du site Wix Waterpearl Harpe : bandeau turquoise,
 fond bleu très pâle, textes en italique.
@@ -112,7 +127,7 @@ fond bleu très pâle, textes en italique.
 - Images pas encore fournies : emplacements vides (classe `image-vide`),
   à remplacer par `<img src={img('...')} />`.
 
-## 8. Mise en ligne
+## 9. Mise en ligne
 
 - Chaque push sur `main` lance `.github/workflows/deploy.yml`, qui construit
   le site et le publie. Suivi dans l'onglet **Actions** du dépôt GitHub.
@@ -127,7 +142,7 @@ fond bleu très pâle, textes en italique.
   `index.html` dans `dist/<page>/index.html` pour chaque page de `routes.ts`
   (sinon `/bio` renverrait une erreur 404), plus un `404.html`.
 
-## 9. Git
+## 10. Git
 
 - Branche principale : `main`.
 - `git pull` avant de commencer à travailler.
@@ -135,7 +150,7 @@ fond bleu très pâle, textes en italique.
 - **Aucun commit ni push sans l'accord de la propriétaire** (voir `CLAUDE.md`).
 - Jamais de `git push --force`.
 
-## 10. Ce qui reste à faire
+## 11. Ce qui reste à faire
 
 - Écrire le contenu réel des pages (actuellement textes d'exemple).
 - Définir la liste des pages et le menu.
