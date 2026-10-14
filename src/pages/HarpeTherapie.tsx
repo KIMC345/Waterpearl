@@ -5,7 +5,7 @@ const FOND = `linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)
 
 // Les 6 domaines d'application, affichés en 2 rangées de 3 dans cet ordre.
 // "titre" : une entrée par ligne du titre.
-// Photos à venir : ajouter image: 'nom.jpg' (fichier dans public/images/).
+// "image" : fichier dans public/images/ ; "alt" : description de la photo.
 type Domaine = {
   titre: string[]
   texte: string
@@ -17,6 +17,8 @@ type Domaine = {
 const DOMAINES: Domaine[] = [
   {
     titre: ['Dans les crèches ou les écoles', 'au service de la créativité'],
+    image: 'creche.jpg',
+    alt: "Harpiste jouant de la harpe à côté de bébés dans une crèche",
     texte:
       "La harpe est un instrument idéal grâce à sa forme unique et à la richesse de ses sonorités. Elle offre une multitude de possibilités sonores qui permettent d'explorer le jeu tout en faisant ses premières expériences musicales. La harpe reste accessible et encourage l'apprentissage créatif.",
     conclusion:
@@ -24,12 +26,16 @@ const DOMAINES: Domaine[] = [
   },
   {
     titre: ['Dans les centres de bien-être', 'ou en Entreprise'],
+    image: 'yoga.jpg',
+    alt: "Salle de yoga avec tapis et coussins, une harpe et un handpan installés au fond",
     texte:
       "La harpe thérapie est un magnifique complément aux séances de yoga yin, restauratif ou yoga nidra, apportant détente et harmonie. Son intégration en entreprise constitue un atout précieux pour la gestion du stress, favorisant ainsi un environnement de travail plus serein.",
     conclusion: 'Offrez à votre esprit et à votre corps cette expérience apaisante et revitalisante.',
   },
   {
     titre: ['En EMS, ou en EHPAD'],
+    image: 'ehpad2.jpg',
+    alt: "Harpiste jouant pour une résidente en fauteuil roulant, qui touche les cordes d'une petite harpe, dans sa chambre",
     texte:
       "La thérapie par la harpe en maison de retraite offre des séances individuelles dans les chambres ou des sessions de groupe, créant un lien précieux au-delà des soins. Les séances peuvent aider à aborder avec bienveillance la perte d'indépendance, de mobilité, ainsi que les changements liés aux différents sens.",
     conclusion:
@@ -37,6 +43,8 @@ const DOMAINES: Domaine[] = [
   },
   {
     titre: ['Pour des projets interactifs', 'avec la harpe'],
+    image: 'harpe-therapie-groupe.jpg',
+    alt: "Séance de groupe en maison de retraite : résidents en cercle avec des clochettes autour d'une harpiste",
     texte:
       "La harpe thérapie permet d'organiser des sessions personnalisées, adaptées aux besoins spécifiques de chaque groupe. Elle favorise ainsi les échanges, et crée un espace propice à l'expression et à l'écoute. La harpe devient ainsi un vecteur d'harmonie, favorisant l'enrichissement mutuel au travers d'expériences collectives partagées.",
     conclusion:
@@ -44,6 +52,8 @@ const DOMAINES: Domaine[] = [
   },
   {
     titre: ['Dans les services hospitaliers'],
+    image: 'hopital.jpg',
+    alt: "Harpiste jouant dans une chambre de néonatologie pendant qu'une soignante s'occupe d'un bébé en couveuse",
     texte:
       "Les harpe thérapeutes peuvent intervenir dans différents services hospitaliers, tels que la néonatologie, l'oncologie afin de créer un cadre apaisant qui diminue le stress et l'anxiété des patients. À travers leur musique, ils souhaitent contribuer à une expérience de soin plus positive. L'entourage ainsi que le personnel hospitalier profite généralement également du son apaisant de l'instrument.",
     conclusion:
@@ -51,6 +61,8 @@ const DOMAINES: Domaine[] = [
   },
   {
     titre: ['En soin palliatif'],
+    image: 'palliatif.jpg',
+    alt: "Mains posées les unes sur les autres, tenant une fleur rose",
     texte:
       "La harpe, avec sa douceur apaisante, se révèle être un précieux intermédiaire pour accompagner les personnes en fin de vie. Elle permet de maintenir un lien et d'initier une préparation sereine à cette transition vers une nouvelle dimension. La musique devient alors un soutien réconfortant dans ces moments délicats.",
     conclusion:
@@ -63,7 +75,7 @@ export default function HarpeTherapie() {
     <>
       <section className="fond-image" style={{ backgroundImage: FOND }}>
         <div className="texte-page">
-          <h1 className="titre-majuscules">Harpe thérapie</h1>
+          <h1 className="titre-page">Harpe thérapie</h1>
 
           <p>
             La harpe thérapie a vu le jour en Californie dans les années 1990 grâce à
