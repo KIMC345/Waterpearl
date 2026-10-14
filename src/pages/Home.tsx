@@ -45,7 +45,7 @@ export default function Home() {
 
       <section className="accueil-actions">
         <Link to="/harpe-therapie" className="lien-majuscules">Découvrir la harpe thérapie</Link>
-        <Link to="/harp-sheets" className="bouton-pilule">Vers les partitions</Link>
+        <Link to="/harp-sheets" className="lien-majuscules">Vers les partitions</Link>
       </section>
     </>
   )

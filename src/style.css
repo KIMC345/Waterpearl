@@ -180,12 +180,21 @@ main p {
 
 .accueil-texte p { margin: 0 0 1.6rem; }
 
+/* Cadre autour des deux liens : même bord blanc et même ombre douce que
+   la photo de l'accueil, sur un fond blanc légèrement transparent. */
 .accueil-actions {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4rem;
-  padding: 4rem 1rem 5rem;
+  gap: 6.5rem;
+  width: fit-content;
+  max-width: calc(100% - 2rem);
+  margin: 4rem auto 5rem;
+  padding: 3.5rem clamp(1.5rem, 6vw, 5rem);
+  background: rgba(255, 255, 255, 0.45);
+  border: 3px solid var(--cadre);
+  border-radius: 0.6rem;
+  box-shadow: 0 6px 16px rgba(44, 74, 114, 0.15);
 }
 
 .lien-majuscules {
@@ -198,7 +207,7 @@ main p {
   color: var(--bleu-lien);
   text-decoration: none;
   /* Effet relief : reflet clair au-dessus, épaisseur turquoise en dessous,
-     puis ombre douce comme le bouton des partitions. */
+     puis ombre douce. */
   text-shadow:
     0 -1px 0 rgba(255, 255, 255, 0.5),
     0 1px 0 rgba(140, 207, 220, 0.8),
@@ -707,7 +716,7 @@ footer {
   .accueil-portrait { display: none; }
 
   .accueil-texte { padding: 2rem 1rem 0; font-size: 1.15rem; }
-  .accueil-actions { gap: 2.5rem; padding: 2.5rem 1rem 3rem; }
+  .accueil-actions { gap: 4rem; margin: 2.5rem auto 3rem; padding: 2.5rem 1.25rem; }
   .lien-majuscules { font-size: 1rem; letter-spacing: 0.15em; }
   .bouton-pilule { padding: 0.9rem 2.4rem; font-size: 1.3rem; }
 
