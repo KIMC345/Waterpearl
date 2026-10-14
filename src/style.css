@@ -27,8 +27,17 @@ body {
   font-family: var(--police-texte);
   line-height: 1.6;
   color: var(--texte);
-  background: linear-gradient(180deg, var(--fond-haut), var(--fond-bas));
+  /* « fixed » : le dégradé suit la fenêtre, pas la longueur de la page,
+     pour que toutes les pages aient la même teinte. */
+  background: linear-gradient(180deg, var(--fond-haut), var(--fond-bas)) fixed;
   min-height: 100vh;
+}
+
+/* Textes justifiés sur toutes les pages ; « hyphens » coupe les mots longs
+   (en français, grâce à lang="fr") pour éviter les grands espaces. */
+main p {
+  text-align: justify;
+  hyphens: auto;
 }
 
 /* ---------- Bandeau du haut ---------- */
@@ -417,7 +426,6 @@ body {
 
 /* ---------- Page Audio et vidéos (src/audios.ts, src/videos.ts) ---------- */
 .medias {
-  background: var(--creme);
   padding: 3rem clamp(1rem, 5vw, 4rem) 4rem;
 }
 
@@ -605,7 +613,8 @@ footer {
   }
   .accueil-titre { order: -1; align-self: center; }
   .accueil-rond { max-width: 300px; }
-  .accueil-portrait { justify-self: center; max-width: 320px; }
+  /* Sur téléphone, on n'affiche pas la photo de la harpe aux voiles. */
+  .accueil-portrait { display: none; }
 
   .accueil-texte { padding: 2rem 1rem 0; font-size: 1.15rem; }
   .accueil-actions { gap: 2.5rem; padding: 2.5rem 1rem 3rem; }
@@ -614,6 +623,6 @@ footer {
 
   .logo { width: 2.6rem; height: 2.6rem; }
   .fond-image { --fondu: 5rem; padding: 2.5rem 1rem var(--fondu); }
-  .texte-page { font-size: 1.1rem; line-height: 1.85; text-align: left; }
+  .texte-page { font-size: 1.1rem; line-height: 1.85; }
   .titre-majuscules { font-size: 1.8rem; margin-bottom: 2rem; }
 }
